@@ -1,4 +1,6 @@
 // src/pages/Auth/RegisterModal.jsx
+const API = import.meta.env.VITE_BACKEND_URL;
+
 import { useState } from "react";
 import axios from "axios";
 import { useAdmin } from "../../Context/AdminContext"; // ✅ context
@@ -12,7 +14,7 @@ function RegisterModal({ onClose }) {
 
   const handleRegister = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/admin/register", {
+      const res = await axios.post(`${API}/api/admin/register`, {
         name,
         email,
         password,

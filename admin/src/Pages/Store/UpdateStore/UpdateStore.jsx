@@ -1,3 +1,4 @@
+const API = import.meta.env.VITE_BACKEND_URL;
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -15,7 +16,7 @@ function UpdateStore() {
   useEffect(() => {
     const fetchStore = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/admin/store/${id}`, {
+        const res = await axios.get(`${API}/api/admin/store/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStore(res.data);

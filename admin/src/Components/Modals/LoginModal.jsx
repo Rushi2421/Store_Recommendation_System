@@ -1,7 +1,8 @@
+const API = import.meta.env.VITE_BACKEND_URL;
 import { useState } from "react";
 import axios from "axios";
 import "./Modal.css";
-import { useAdmin } from "../../context/AdminContext";
+import { useAdmin } from "../../Context/AdminContext";
 
 function LoginModal({ onClose }) {
   const { login } = useAdmin();
@@ -14,7 +15,7 @@ function LoginModal({ onClose }) {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/admin/login", {
+      const response = await axios.post(`${API}/api/admin/login`, {
         email,
         password,
       });

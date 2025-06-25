@@ -1,6 +1,7 @@
+const API = import.meta.env.VITE_BACKEND_URL;
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useAdmin } from "../../../context/AdminContext";
+import { useAdmin } from "../../../Context/AdminContext";
 
 import "./StoreCard.css";
 
@@ -11,7 +12,7 @@ function StoreCard({ store, refresh }) {
     if (!window.confirm("Are you sure you want to delete this store?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/admin/store/${store._id}`, {
+      await axios.delete(`${API}/api/admin/store/${store._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("✅ Store deleted successfully!");

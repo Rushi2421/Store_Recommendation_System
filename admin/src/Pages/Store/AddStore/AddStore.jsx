@@ -1,3 +1,4 @@
+const API = import.meta.env.VITE_BACKEND_URL;
 import { useState } from "react";
 import axios from "axios";
 import "./AddStore.css";
@@ -43,7 +44,7 @@ function AddStore() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/admin/addstore", formData, {
+      await axios.post(`${API}/api/admin/addstore`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("✅ Store added!");
