@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/img/logo.png";
-import LoginModal from "../../pages/auth/LoginModal";
+import LoginModal from "../../pages/Auth/LoginModal";
 import RegisterModal from "../../pages/Auth/RegisterModal";
 import { useUser } from "../../context/UserContext";
 
