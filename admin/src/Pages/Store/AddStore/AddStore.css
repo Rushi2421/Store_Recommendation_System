@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.add-store-page {
+  padding: 3rem 5%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fefefe;
+  color: #1f1f1f;
+  text-align: center;
+}
+
+.add-store-page h2 {
+  font-size: 2.5rem;
+  color: #ff7a00;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.add-store-page .subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.add-store-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.add-store-form input,
+.add-store-form select {
+  flex: 1 1 48%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.add-store-form input:focus {
+  border-color: #ff7a00;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 123, 0, 0.3);
+}
+
+.file-label {
+  width: 100%;
+  font-weight: 600;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.file-label input {
+  margin-top: 0.5rem;
+}
+
+.uploading-text {
+  font-size: 0.95rem;
+  color: #777;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.image-preview img {
+  width: 120px;
+  margin-top: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.success-msg {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.add-store-form button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: #ff7a00;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-store-form button:hover {
+  background-color: #e56f00;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;600;700&display=swap');
+
+.admin-navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-left img.logo {
+  height: 46px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.navbar-left img.logo:hover {
+  transform: scale(1.02);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.btn-outline {
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid #ff7b00;
+  border-radius: 6px;
+  color: #ff7b00;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+    background-color: #fff3e0;
+  box-shadow: 0 0 8px rgba(255, 123, 0, 0.3);
+  transform: scale(1.02);
+}
+
+.admin-name {
+  margin-right: 1rem;
+  font-weight: 600;
+  color:#000000;
+}

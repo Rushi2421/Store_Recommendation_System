@@ -1,0 +1,59 @@
+.preferences-page {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f9f9f9;
+  min-height: 50vh;
+}
+
+.preferences-page h2 {
+  font-size: 36px;
+  color:  #ff7b00;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size:20px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.preferences-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 36px;
+  padding: 0 16px;
+}
+
+.preference-card {
+  width: 160px;
+  height: 160px;
+  background: #fffdf7;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  text-align: center;
+  padding: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.preference-card:hover {
+  border-color: #ff6b00;
+  background: #fff8ee;
+  transform: translateY(-4px);
+}
+
+.preference-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+
+}
+
+

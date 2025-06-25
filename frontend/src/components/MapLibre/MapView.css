@@ -1,0 +1,45 @@
+.popup-container {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  padding: 16px;
+  max-width: 280px;
+  border-radius: 14px;
+}
+
+/* Apply to the main popup content box */
+.maplibregl-popup-content {
+  padding: 0 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  overflow: visible !important;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Adjust cross button alignment */
+.maplibregl-popup-close-button {
+  top: 8px !important;
+  right: 10px !important;
+  font-size: 18px !important;
+  color: #555;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hide scrollbars inside */
+.maplibregl-popup-content::-webkit-scrollbar {
+  display: none;
+}
+
+.popup-container h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: #ff5e00;
+}
+
+.popup-container p {
+  margin: 8px 0;
+}

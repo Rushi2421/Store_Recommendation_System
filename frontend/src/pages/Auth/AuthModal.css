@@ -1,0 +1,92 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.auth-modal {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.auth-modal h2 {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.auth-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-modal input {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease;
+}
+
+.auth-modal input:focus {
+  border-color: #ff7b00;
+  outline: none;
+}
+
+button {
+  font-size: 16px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"] {
+  background-color: #ff7b00;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 123, 0, 0.3);
+}
+
+button[type="submit"]:hover {
+  background-color: #e56e00;
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(255, 123, 0, 0.4);
+}
+
+.close-btn {
+  background: none;
+  color: #555;
+  border: none;
+  font-size: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ff7b00;
+}
+
+
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+}

@@ -1,0 +1,48 @@
+.store-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.store-card img {
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.store-card h3 {
+  margin: 0.5rem 0;
+}
+
+.store-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.edit-btn, .delete-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #fff3e0;
+  color: #ff7a00;
+  border: 1px solid #ff7a00;
+}
+
+.delete-btn {
+  background: #ffe0e0;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}

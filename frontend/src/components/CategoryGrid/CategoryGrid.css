@@ -1,0 +1,73 @@
+.category-section {
+    padding: 40px 40px;
+    background-color: #fff;
+}
+
+.category-section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #222;
+    margin-left: 65px;
+    /* 🔶 aligns with first card */
+}
+
+
+
+.category-grid {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.category-card {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 50px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.category-card:first-child {
+    margin-left: 60px;
+}
+
+.category-card:last-child {
+    margin-right: 60px;
+}
+
+.category-card:hover {
+
+    box-shadow: 0 0 14px rgba(255, 123, 0, 0.3);
+    transform: scale(1.05) rotate(0deg);
+}
+
+.category-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-icon img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}

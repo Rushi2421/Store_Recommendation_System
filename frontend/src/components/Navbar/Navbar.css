@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 32px;
+  background-color: #fff;
+  font-family: 'Inter', sans-serif;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 46px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* ✅ Zoom effect only on logo */
+.navbar-logo:hover {
+  transform: scale(1.02);
+}
+
+.navbar-right {
+  display: flex;
+  gap: 24px;
+}
+
+.navbar-right a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+/* ❌ No hover zoom for regular buttons */
+.navbar-right a:not(.login-btn):hover {
+  background-color: #f7f7f7;
+  color: #000;
+  transform: none;
+}
+
+/* ✅ Login button with zoom + glow */
+.navbar-right a.login-btn {
+  border: 1px solid #ff7b00;
+  color: #ff7b00;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.navbar-right a.login-btn:hover {
+  background-color: #fff5e6;
+  box-shadow: 0 0 12px rgba(255, 123, 0, 0.4);
+  transform: scale(1.05);
+}
+.logout-btn {
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid #ff7b00;
+  border-radius: 6px;
+  color: #ff7b00;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #fff3e0;
+  box-shadow: 0 0 8px rgba(255, 123, 0, 0.3);
+  transform: scale(1.02);
+}
+.login-btn {
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid #ff7b00;
+  border-radius: 6px;
+  color: #ff7b00;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: #fff3e0;
+  box-shadow: 0 0 8px rgba(255, 123, 0, 0.3);
+  transform: scale(1.02);
+}
+.signup-btn {
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid #ff7b00;
+  border-radius: 6px;
+  color: #ff7b00;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.signup-btn:hover {
+  background-color: #fff3e0;
+  box-shadow: 0 0 8px rgba(255, 123, 0, 0.3);
+  transform: scale(1.02);
+}
+
