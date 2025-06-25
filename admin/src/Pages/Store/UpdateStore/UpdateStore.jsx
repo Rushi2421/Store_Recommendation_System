@@ -60,7 +60,7 @@ function UpdateStore() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/admin/store/${id}`, formData, {
+      await axios.put(`${API}/api/admin/store/${id}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("✅ Store updated successfully!");
