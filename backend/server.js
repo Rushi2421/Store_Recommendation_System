@@ -1,19 +1,21 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const authRoutes = require('./routes/authRoutes');
+const storeRoutes = require('./routes/storeRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
 
 // ✅ CORS Configuration
 const allowedOrigins = [
-  "http://localhost:5173", // local user frontend
-  "http://localhost:5174", // local admin frontend
-  "https://store-recommendation-system.vercel.app", // deployed user frontend
-  "https://store-recommendation-sys-git-b95058-rushikesh-rapashes-projects.vercel.app", // deployed admin panel
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://store-recommendation-system-xlfl.vercel.app", // Frontend
+  "https://store-recommendation-system.vercel.app"       // Admin
 ];
 
 app.use(cors({
@@ -21,33 +23,32 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error('Not allowed by CORS: ' + origin));
     }
   },
   credentials: true
 }));
 
+// ✅ Middleware
 app.use(express.json());
 
-// ✅ Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+// ✅ Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/stores', storeRoutes);
+app.use('/api/admin', adminRoutes);
+
+// ✅ MongoDB Connection
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-})
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.error("MongoDB connection error:", err));
+}).then(() => {
+  console.log("MongoDB connected");
+}).catch(err => {
+  console.error("MongoDB connection failed:", err.message);
+});
 
-// ✅ Import routes
-const authRoutes = require("./routes/authRoutes");
-const storeRoutes = require("./routes/storeRoutes");
-const adminStoreRoutes = require("./routes/adminStoreRoutes");
-
-// ✅ Use routes
-app.use("/api/auth", authRoutes);
-app.use("/api/store", storeRoutes);
-app.use("/api/admin", adminStoreRoutes);
-
-// ✅ Start server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+// ✅ Start Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
 });
