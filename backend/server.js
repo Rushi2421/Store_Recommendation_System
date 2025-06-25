@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ CORS setup
 app.use(cors({
- origin: ["http://localhost:5173", "http://localhost:5174"],// frontend origin
+ origin: ["http://localhost:5173", "http://localhost:5174","https://store-recommendation-system.vercel.app/","https://store-recommendation-system-xlfl.vercel.app/"],// frontend origin
   credentials: true
 }));
 
