@@ -1,7 +1,7 @@
 import React from "react";
 import "./AppPromo.css";
-import playstore from "../../assets/mob1.png";
-import appstore from "../../assets/mob2.png";
+import playstore from "../../Assets/mob1.png";
+import appstore from "../../Assets/mob2.png";
 
 const AppPromo = () => {
   return (
