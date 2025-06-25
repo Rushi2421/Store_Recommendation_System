@@ -1,21 +1,26 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const authRoutes = require('./routes/authRoutes');
-const storeRoutes = require('./routes/storeRoutes');
-const adminRoutes = require('./routes/adminRoutes');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
 
+// Load environment variables
 dotenv.config();
 
-const app = express();
+// Import route files
+const authRoutes = require("./routes/authRoutes");
+const storeRoutes = require("./routes/storeRoutes");
+const adminStoreRoutes = require("./routes/adminStoreRoutes");
+const adminAuthRoutes = require("./routes/adminAuthRoutes");
 
-// ✅ CORS Configuration
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// ✅ CORS Whitelist
 const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5174",
-  "https://store-recommendation-system-xlfl.vercel.app", // Frontend
-  "https://store-recommendation-system.vercel.app"       // Admin
+  "http://localhost:5173", // user local
+  "http://localhost:5174", // admin local
+  "https://store-recommendation-system-xlfl.vercel.app", // user Vercel frontend
+  "https://store-recommendation-system.vercel.app" // admin Vercel panel
 ];
 
 app.use(cors({
@@ -23,32 +28,30 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS: ' + origin));
+      callback(new Error("Not allowed by CORS: " + origin));
     }
   },
   credentials: true
 }));
 
-// ✅ Middleware
+// Middleware to parse JSON
 app.use(express.json());
 
-// ✅ Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/stores', storeRoutes);
-app.use('/api/admin', adminRoutes);
+// ✅ Route Handlers
+app.use("/api/auth", authRoutes);               // user auth & preferences
+app.use("/api/store", storeRoutes);             // ML store recommendations
+app.use("/api/admin", adminStoreRoutes);        // admin store CRUD
+app.use("/api/adminauth", adminAuthRoutes);     // admin login/register
 
 // ✅ MongoDB Connection
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(() => {
-  console.log("MongoDB connected");
-}).catch(err => {
-  console.error("MongoDB connection failed:", err.message);
-});
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch((err) => console.error("❌ MongoDB connection error:", err.message));
 
-// ✅ Start Server
-const PORT = process.env.PORT || 5000;
+// ✅ Start the Server
 app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
