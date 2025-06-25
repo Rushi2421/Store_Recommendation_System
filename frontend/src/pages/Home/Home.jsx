@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import CategoryGrid from "../../components/CategoryGrid/CategoryGrid";
 import AppPromo from "../../components/AppPromo/AppPromo"; // ✅ AppPromo added
-import LoginModal from "../auth/LoginModal";
+import LoginModal from "../Auth/LoginModal";
 import { useUser } from "../../context/UserContext";
 
 const Home = () => {
