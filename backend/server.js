@@ -1,38 +1,53 @@
-require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-// ✅ CORS setup
+// ✅ CORS Configuration
+const allowedOrigins = [
+  "http://localhost:5173", // local user frontend
+  "http://localhost:5174", // local admin frontend
+  "https://store-recommendation-system.vercel.app", // deployed user frontend
+  "https://store-recommendation-sys-git-b95058-rushikesh-rapashes-projects.vercel.app", // deployed admin panel
+];
+
 app.use(cors({
- origin: ["http://localhost:5173", "http://localhost:5174","https://store-recommendation-system.vercel.app/","https://store-recommendation-system-xlfl.vercel.app/"],// frontend origin
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
-// ✅ Body parser
 app.use(express.json());
 
-// ✅ MongoDB connection
+// ✅ Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(() => console.log("✅ MongoDB connected"))
-  .catch(err => console.error("❌ MongoDB connection error:", err));
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.error("MongoDB connection error:", err));
 
-// ✅ Public Routes
-app.use("/api/user", require("./routes/authRoutes"));      // user login/register
-app.use("/api/store", require("./routes/storeRoutes"));    // store recommendation routes
+// ✅ Import routes
+const authRoutes = require("./routes/authRoutes");
+const storeRoutes = require("./routes/storeRoutes");
+const adminStoreRoutes = require("./routes/adminStoreRoutes");
 
-// ✅ Admin Routes (NEW)
-app.use("/api/admin", require("./routes/adminAuthRoutes"));       
-app.use("/api/admin", require("./routes/adminStoreRoutes"));  // add/update/delete/mystore (protected)
+// ✅ Use routes
+app.use("/api/auth", authRoutes);
+app.use("/api/store", storeRoutes);
+app.use("/api/admin", adminStoreRoutes);
 
-// ✅ Root
-app.get("/", (req, res) => res.send("🛍️ Store Recommender API Running"));
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+// ✅ Start server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
