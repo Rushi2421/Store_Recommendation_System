@@ -4,34 +4,33 @@ import API from "../../utils/api";
 import { useUser } from "../../context/UserContext";
 
 const RegisterModal = ({ onClose }) => {
-  const { login } = useUser();  // ✅ correctly use login from context
+  const { login } = useUser();
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
   });
 
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
     try {
       const res = await API.post("/user/register", formData);
-
-      // ✅ Immediately log in user after successful registration
       login(res.data.user, res.data.token);
-
-      onClose(); // ✅ Close modal
+      onClose();
     } catch (err) {
+      console.error("Register error:", err.response?.data?.message);
       setError(err.response?.data?.message || "Registration failed");
     }
   };
@@ -49,16 +48,16 @@ const RegisterModal = ({ onClose }) => {
             required
           />
           <input
-            name="email"
             type="email"
+            name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
             required
           />
           <input
-            name="password"
             type="password"
+            name="password"
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
