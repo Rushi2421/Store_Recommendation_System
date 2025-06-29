@@ -35,26 +35,26 @@ Includes both a **user interface** and an **admin panel** for managing stores wi
 
 ---
 
-# Clone the repo
+### Clone the repo
 git clone https://github.com/your-username/Store_Recommendation_System.git
 cd Store_Recommendation_System
 
-# Start backend
+### Start backend
 cd backend
 npm install
 node server.js
 
-# Start frontend
+### Start frontend
 cd ../frontend
 npm install
 npm run dev
 
-# Start admin
+### Start admin
 cd ../admin
 npm install
 npm run dev
 
-# Change .env File
+### Change .env File
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 
