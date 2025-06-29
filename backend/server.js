@@ -6,10 +6,19 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ CORS setup
+// ✅ Final robust CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173",  // local user
+  "http://localhost:5174",  // local admin
+  "https://store-recommendation-system-xlfl.vercel.app",  // deployed user frontend
+  "https://store-recommendation-system.vercel.app"        // deployed admin
+];
+
 app.use(cors({
- origin: ["http://localhost:5173", "http://localhost:5174"],// frontend origin
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 // ✅ Body parser
@@ -19,20 +28,22 @@ app.use(express.json());
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-}).then(() => console.log("✅ MongoDB connected"))
-  .catch(err => console.error("❌ MongoDB connection error:", err));
+})
+.then(() => console.log("✅ MongoDB connected"))
+.catch(err => console.error("❌ MongoDB connection error:", err));
 
-// ✅ Public Routes
-app.use("/api/user", require("./routes/authRoutes"));      // user login/register
-app.use("/api/store", require("./routes/storeRoutes"));    // store recommendation routes
+// ✅ User routes
+app.use("/api/user", require("./routes/authRoutes"));      
+app.use("/api/store", require("./routes/storeRoutes"));
 
-// ✅ Admin Routes (NEW)
+// ✅ Admin routes
 app.use("/api/admin", require("./routes/adminAuthRoutes"));       
-app.use("/api/admin", require("./routes/adminStoreRoutes"));  // add/update/delete/mystore (protected)
+app.use("/api/admin", require("./routes/adminStoreRoutes"));  
 
-// ✅ Root
+// ✅ Health check
 app.get("/", (req, res) => res.send("🛍️ Store Recommender API Running"));
 
+// ✅ Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
