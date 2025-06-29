@@ -4,7 +4,7 @@ import API from "../../utils/api";
 import { useUser } from "../../context/UserContext";
 
 const LoginModal = ({ onClose }) => {
-  const { login } = useUser();
+  const { login } = useUser(); // Access login() from context
 
   const [formData, setFormData] = useState({
     email: "",
@@ -26,8 +26,8 @@ const LoginModal = ({ onClose }) => {
 
     try {
       const res = await API.post("/user/login", formData);
-      login(res.data.user, res.data.token);
-      onClose();
+      login(res.data.user, res.data.token);  // ✅ save user + token
+      onClose();                             // ✅ close modal
     } catch (err) {
       console.error("Login error:", err.response?.data?.message);
       setError(err.response?.data?.message || "Login failed");
