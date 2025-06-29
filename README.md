@@ -55,4 +55,7 @@ npm install
 npm run dev
 
 # Change .env File
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+
 
