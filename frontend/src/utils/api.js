@@ -1,9 +1,9 @@
 import axios from "axios";
 
-// Create a pre-configured axios instance
+// point to deployed backend:
 const API = axios.create({
-  baseURL: "https://store-recommendation-system-backend.onrender.com",  // 🔁 Change this to your production URL later
-  withCredentials: true,                 // if you're using cookies/sessions
+  baseURL: "https://store-recommendation-system-backend.onrender.com/api",  
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
